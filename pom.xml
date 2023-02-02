@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hackyle</groupId>
+    <artifactId>project-template</artifactId>
+    <version>0.6.0</version>
+
+    <!--模块聚合，Maven自动管理此父模块下的子模块-->
+    <modules>
+        <module>template-common</module>
+        <module>template-logger</module>
+
+        <module>template-third-platform</module>
+
+        <module>service-app-01</module>
+        <module>service-app-02</module>
+        <module>template-tool</module>
+    </modules>
+
+    <!--指定打包方式：pom，父工程必须加-->
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+    </properties>
+
+    <!--公共依赖管理，每个子模块都会有本标签内的依赖-->
+    <dependencies>
+
+    </dependencies>
+
+    <!--依赖统一管理，需要指定版本，在子模块中就不需要再指定版本-->
+    <dependencyManagement>
+        <dependencies>
+            <!--项目聚合的模块申明-->
+            <dependency>
+                <groupId>com.hackyle</groupId>
+                <artifactId>template-common</artifactId>
+                <version>0.6.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hackyle</groupId>
+                <artifactId>template-logger</artifactId>
+                <version>0.6.0</version>
+            </dependency>
+
+            <!-- SpringBoot：为了避免在子项目中多次引入SpringBoot依赖，造成依赖冲突，所以不使用parent标签引入SpringBoot-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Utils-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>2.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>3.18.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
