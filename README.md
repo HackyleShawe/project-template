@@ -14,7 +14,7 @@
 
 # 项目启动
 
-**使用Maven的打包工具，将service-app-01和service-app-02打成Jar运行**
+**使用Maven的打包工具，将service-app-01与service-app-02打成Jar运行**
 
 
 
@@ -26,7 +26,7 @@ set JAVA_HOME=D:\ProgramFilesKS\Java\JDK11
 set path=%JAVA_HOME%\bin;%path%
 
 # 进入Jar包所在目录
-cd D:\\project-template\\template-service-app01.jar
+cd D:\\project-template
 
 # 执行Jar
 java -jar template-service-app01.jar.jar
@@ -102,7 +102,7 @@ server {
 **Linux平台-生产备份**
 
 ```shell
-cd /opt/mysql8.0.27/bin && ./mysqldump -u数据库用户名 -p数据库连接密码 --databases 数据库名 --opt --no-create-info --no-create-db --skip-extended-insert --skip-quick > /data/blog.hackyle.com/blog_hackyle_com_backup-2023-01-05.sql
+cd /opt/mysql8.0.27/bin && ./mysqldump -u数据库用户名 -p数据库连接密码 --databases 数据库名 --opt --no-create-info --no-create-db --skip-extended-insert --skip-quick > 备份位置的绝对路径+文件
 ```
 
 - n --no-create-db：不添加Create Database语句
@@ -112,6 +112,4 @@ cd /opt/mysql8.0.27/bin && ./mysqldump -u数据库用户名 -p数据库连接密
 
 **Windows平台**
 
-pushd D:\ProgramFilesKS\JavaDeveloper\mysql-8.0.26-winx64\bin && mysqldump -u数据库用户名 -p数据库连接密码 --databases 数据库名 --opt --no-create-info --no-create-db --skip-extended-insert --skip-quick > C:\users\kyle\desktop\blog_hackyle_com_dev_backup.sql
-
-
+pushd D:\ProgramFilesKS\JavaDeveloper\mysql-8.0.26-winx64\bin && mysqldump -u数据库用户名 -p数据库连接密码 --databases 数据库名 --opt --no-create-info --no-create-db --skip-extended-insert --skip-quick > 备份位置的绝对路径+文件
