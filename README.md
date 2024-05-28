@@ -16,9 +16,17 @@
 
 **使用Maven的打包工具，将service-app-01与service-app-02打成Jar运行**
 
+> **注意：**不要对单个模块进行聚合打包，否则会出现错误。
+>
+> 例如，对”service-app-01“进行单独打包，就会出现依赖”com.hackyle:template-common:jar:1.0.0 is missing, no dependency infomation availble"
+>
+> **原因:** 执行打包时他会在本地仓库中寻找模块，然而Maven本地仓库中并没有template-common这个模块的jar包，因此就失败了
+>
+> 此时我们尝试往本地仓库中安装template-common这个模块的jar包, 点击install，但这次又构建失败了：提示没有找到他的父工程, 因此继续安装父工程以后, 最终才打包成功.
+>
+> **解决办法：**找到父工程，执行一键打包！不要对某个模块单独打包
 
-
-**Windows平台启动打成Jar的SpringBoot项目**
+**Windows平台执行Jar**
 
 ```bash
 # 设置临时环境变量
@@ -34,7 +42,7 @@ java -jar template-service-app01.jar.jar
 pause
 ```
 
-**Linux上后台执行打成Jar的SpringBoot项目**
+**Linux上后台执行打成Jar**
 
 ```shell
 nohup java -jar Jar名字.jar --spring.profiles.active=prod >/dev/null 2>&1 &
