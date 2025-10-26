@@ -12,6 +12,14 @@
 - service-app-01：业务模块A，可单独打成Jar包运行
 - service-app-02：业务模块B，可单独打成Jar包运行
 
+技术栈说明：
+- JDK 8
+- SpringBoot 2.7.18
+- commons-lang3 3.12.0
+- fastjson 2.0.5
+
+
+
 # 项目启动
 
 **使用Maven的打包工具，将service-app-01与service-app-02打成Jar运行**
@@ -30,7 +38,7 @@
 
 ```bash
 # 设置临时环境变量
-set JAVA_HOME=D:\ProgramFilesKS\Java\JDK11
+set JAVA_HOME=D:\ProgramFilesKS\Java\JDK8
 set path=%JAVA_HOME%\bin;%path%
 
 # 进入Jar包所在目录
